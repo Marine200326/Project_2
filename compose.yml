@@ -26,9 +26,9 @@ services:
     networks:
       - postgres
     environment:
-      POSTGRES_USER: your_username
-      POSTGRES_PASSWORD: your_password
-      POSTGRES_DB: your_database
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: my_database 
 
   cloudbeaver:
     image: dbeaver/cloudbeaver
