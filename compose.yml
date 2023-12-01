@@ -34,7 +34,7 @@ services:
     image: dbeaver/cloudbeaver
     restart: always
     ports:
-      - "8081:3306"
+      - "8081:8978"
     networks:
       - postgres
 
