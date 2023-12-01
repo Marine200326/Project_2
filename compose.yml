@@ -1,0 +1,71 @@
+version: '3'
+services:
+  it-tools: # Web-based app, collection of handy online tools for developers, with great UX.
+    image: corentinth/it-tools
+    container_name: it-tools
+    restart: always
+    ports:
+      - 8080:80
+  ubuntu-linux:
+    image: ubuntu
+    container_name: ubuntu-linux
+    restart: always
+    tty: true
+    volumes: 
+      - demo-files:/demo-folder 
+  
+volumes:
+  demo-files:
+
+#--------------------------------------------------------------------------------------
+version: '3'
+
+services:
+  it-tools:
+    image: corentinth/it-tools 
+    container_name: it-tools
+    restart: always
+    ports:
+      - "8080:8080"
+
+  portainer:
+    image: portainer/portainer-ce
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - data:/data
+
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    environment:
+      POSTGRES_USER: your_username
+      POSTGRES_PASSWORD: your_password
+      POSTGRES_DB: your_database
+
+  cloudbeaver:
+    image: dbeaver/cloudbeaver
+    restart: always
+    ports:
+      - "8081:8080"
+    networks:
+      - postgres
+
+  uptime-kuma:
+    image: louislam/uptime-kuma
+    restart: always
+    ports:
+      - "8082:3001"
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  data:
