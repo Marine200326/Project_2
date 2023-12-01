@@ -15,16 +15,4 @@ Vagrant.configure("2") do |config|
   
 
   
-#   Vagrant.configure(2) do |config|
-#     config.vm.define "docker_host" do |dh|
-#         dh.vm.box = "debian/bullseye64"
-#         dh.vm.network "private_network", ip: "192.168.56.100"
-#         dh.vm.network :forwarded_port, guest: 8080, host: 8080, auto_correct: true
-#         dh.vm.provision "shell", path: "docker_bootstrap.sh", privileged: "true"
-#         config.vm.provider "virtualbox" do |vb|
-#             vb.memory = "2048"
-#             vb.cpus = "2"
-#             vb.name = "Docker Host"
-#         end
-#     end
-# end
+
