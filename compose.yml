@@ -1,23 +1,4 @@
-version: '3'
-services:
-  it-tools: # Web-based app, collection of handy online tools for developers, with great UX.
-    image: corentinth/it-tools
-    container_name: it-tools
-    restart: always
-    ports:
-      - 8080:80
-  ubuntu-linux:
-    image: ubuntu
-    container_name: ubuntu-linux
-    restart: always
-    tty: true
-    volumes: 
-      - demo-files:/demo-folder 
-  
-volumes:
-  demo-files:
 
-#--------------------------------------------------------------------------------------
 version: '3'
 
 services:
